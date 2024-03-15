@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
     title: z.string().min(2).max(20),
@@ -54,17 +55,48 @@ const CollectionFrom = () => {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Title" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
+            
               <FormMessage />
             </FormItem>
           )}
         />
+
+         <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+              <Textarea placeholder="Description" {...field} rows={5}></Textarea>
+              
+              </FormControl>
+           
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+         <FormField
+          control={form.control}
+          name="image"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Image</FormLabel>
+              <FormControl>
+             
+              
+              </FormControl>
+           
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+     
         <Button type="submit">Submit</Button>
       </form>
     </Form>

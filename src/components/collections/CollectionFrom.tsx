@@ -103,14 +103,16 @@ const CollectionFrom = () => {
                         )}
                     />
 
+                    <div className="flex gap-5">
                     <Button type="submit">Submit</Button>
                     <Button
                         type="button"
                         onClick={() => router.push("/collections")}
-                        className="bg-blue-1 text-white"
+                        
                     >
                         Discard
                     </Button>
+                    </div>
                 </form>
             </Form>
 

@@ -1,5 +1,6 @@
 import { connectToDB } from "@/lib/mongoDb";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import Collection from "@/lib/modules/collections";
@@ -7,7 +8,7 @@ import Collection from "@/lib/modules/collections";
 export const POST = async (req: NextRequest) => {
   try {
     const { userId } = auth()
-
+    console.log(userId)
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 403 })
     }
@@ -32,6 +33,10 @@ export const POST = async (req: NextRequest) => {
       image,
     })
 
+
+
+
+
     await newCollection.save()
 
     return NextResponse.json(newCollection, { status: 200 })
@@ -39,7 +44,10 @@ export const POST = async (req: NextRequest) => {
     console.log("[collections_POST]", err)
     return new NextResponse("Internal Server Error", { status: 500 })
   }
+  console.log("sUCCESS")
 }
+
+
 
 export const GET = async (req: NextRequest) => {
   try {
